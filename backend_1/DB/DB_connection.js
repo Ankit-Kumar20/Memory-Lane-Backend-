@@ -1,4 +1,4 @@
-const client = require('./prisma_client')
+import client from './prisma_client.js'
 
 async function connection_db(){
     try{
@@ -10,4 +10,4 @@ async function connection_db(){
     }
 }
 
-module.exports = connection_db
+export default connection_db

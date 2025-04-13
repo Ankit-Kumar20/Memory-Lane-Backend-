@@ -9,4 +9,4 @@ uvicorn
 python-multipart
 chromadb
 pydub
-boto3
+boto3[crt]

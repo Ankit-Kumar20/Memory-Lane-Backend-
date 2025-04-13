@@ -61,7 +61,7 @@ model Verification {
   id         String   @id @default(cuid())
   identifier String
   value      String
-  expiresAt   DateTime
+  expireAt   DateTime
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }

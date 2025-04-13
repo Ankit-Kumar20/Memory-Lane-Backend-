@@ -1,11 +1,13 @@
-const express = require('express')
-const axios = require('axios')
-const cors = require('cors')
-const connection_db = require('./DB/DB_connection')
-const auth = require('./Auth/auth')
-const { toNodeHandler } = require("better-auth/node");
-const audio_upload = require('./routes/upload_audio')
-require('dotenv').config()
+import express from 'express';
+import axios from 'axios';
+import cors from 'cors';
+import connection_db from './DB/DB_connection.js';
+import auth from './Auth/auth.js';
+import { toNodeHandler } from 'better-auth/node';
+// import audio_upload from './routes/upload_audio.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express()
 
@@ -26,7 +28,7 @@ app.use(express.json())
 
 connection_db();
 
-app.use('/audio', audio_upload)
+// app.use('/audio', audio_upload)
 
 app.get('/', async function (req, res) {
     res.status(201).send("hello")

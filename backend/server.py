@@ -31,7 +31,7 @@ def root():
 
 ## making of embeddings
 @app.post('/upload')
-async def Upload_audio(audio_id: int = Form(...), audio_file: UploadFile = File(...)):
+async def Upload_audio(user_id: int = Form(...), audio_id: int = Form(...), audio_file: UploadFile = File(...)):
     file_content = await audio_file.read()
     print("hello")
     file_name = audio_file.filename

@@ -1,8 +1,10 @@
-const { betterAuth } = require ("better-auth");
-const { prismaAdapter } = require("better-auth/adapters/prisma");
-const { emailOTPClient } = require('better-auth/client/plugins')
-const { PrismaClient } = require("@prisma/client");
-require('dotenv').config();
+import { betterAuth } from 'better-auth';
+import { prismaAdapter } from 'better-auth/adapters/prisma';
+import { emailOTP } from 'better-auth/plugins';
+import { PrismaClient } from '@prisma/client';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const prisma = new PrismaClient();
 
@@ -16,9 +18,13 @@ const auth = betterAuth({
         enabled: true
     },
     plugins:[
-        emailOTPClient()
+        emailOTP({
+            async sendVerificationOTP({ email, otp, type }) {
+                console.log(`Sending OTP ${otp} to ${email} for ${type}`);
+            },
+        }),
     ],
     trustedOrigins: ["http://localhost:5173"]
 });
 
-module.exports = auth;
+export default auth
