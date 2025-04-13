@@ -1,0 +1,12 @@
+fastapi
+pydantic
+langchain-community
+langchain
+langchain-openai
+prisma
+assemblyai
+uvicorn
+python-multipart
+chromadb
+pydub
+boto3

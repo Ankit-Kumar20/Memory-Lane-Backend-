@@ -1,0 +1,26 @@
+{
+  "name": "backend_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.782.0",
+    "@prisma/client": "^6.5.0",
+    "aws-sdk": "^2.1692.0",
+    "axios": "^1.8.4",
+    "bcryptjs": "^3.0.2",
+    "better-auth": "^1.2.5",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "express-openid-connect": "^2.18.0",
+    "form-data": "^4.0.2",
+    "multer": "^1.4.5-lts.2",
+    "prisma": "^6.5.0"
+  }
+}
