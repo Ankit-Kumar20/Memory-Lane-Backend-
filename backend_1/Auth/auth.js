@@ -8,6 +8,9 @@ dotenv.config();
 
 const prisma = new PrismaClient();
 
+var OTP = null;
+var EMAIL = null;
+
 const auth = betterAuth({
     secret: process.env.BETTER_AUTH_SECRET,
     url: process.env.BETTER_AUTH_URL,
@@ -20,6 +23,8 @@ const auth = betterAuth({
     plugins:[
         emailOTP({
             async sendVerificationOTP({ email, otp, type }) {
+                OTP  = otp
+                EMAIL = email
                 console.log(`Sending OTP ${otp} to ${email} for ${type}`);
             },
         }),
@@ -27,4 +32,4 @@ const auth = betterAuth({
     trustedOrigins: ["http://localhost:5173"]
 });
 
-export default auth
+export default {auth, OTP, EMAIL}
