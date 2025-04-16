@@ -31,6 +31,11 @@ def chapter_timestamp(query: str, vector_store_chapter = vector_store_chapter) -
     res_doc = vector_store_chapter.similarity_search(query)
     time_stamp = [res_doc[0].metadata['start'], res_doc[0].metadata['end']]
     return time_stamp
+
+def delete_vector_store_chapter():
+    vector_store_chapter.delete()
+
+
         
     
 
