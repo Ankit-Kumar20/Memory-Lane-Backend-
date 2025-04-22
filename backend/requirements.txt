@@ -10,3 +10,7 @@ python-multipart
 chromadb
 pydub
 boto3[crt]
+pinecone
+langchain-pinecone
+redis
+cassio
