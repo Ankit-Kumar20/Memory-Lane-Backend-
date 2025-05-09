@@ -32,4 +32,4 @@ const auth = betterAuth({
     trustedOrigins: ["http://localhost:5173"]
 });
 
-export default {auth, OTP, EMAIL}
+export default auth

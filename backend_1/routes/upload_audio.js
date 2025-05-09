@@ -8,7 +8,25 @@ const router = express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({storage: storage})
 
-router.post('/audio', upload.single('audio_file'), async function(req, res){
+async function get_user_id(email){
+    try{
+        const response = await client.user.findFirst(
+            {
+                where: {
+                    "email": email
+                }
+            }
+        )
+        console.log(response.id);
+        console.log(typeof(response.id));
+        res.status(201).send(response.id);
+    }
+    catch(err){
+        console.log(err.message)
+    }
+}
+
+router.post('/upload', upload.single('audio_file'), async function(req, res){
     const { email } = req.body.email;
     if (!req.file) {
         return res.status(400).send('No file uploaded.');
@@ -16,8 +34,11 @@ router.post('/audio', upload.single('audio_file'), async function(req, res){
     audio_file_name = req.file.originalname;
     const buffer = req.file.buffer;
 
+    user_id = await get_user_id(email)
+
     const form = new FormData();
     form.append("user_email", email)
+    form.append("user_id", user_id)
     form.append('audio_file', buffer, {
         filename: audio_file_name,
         contentType: 'audio/mpeg'
